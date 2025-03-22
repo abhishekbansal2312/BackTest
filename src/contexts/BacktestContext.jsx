@@ -84,64 +84,100 @@ export const BacktestProvider = ({ children }) => {
     return config;
   };
 
-  // Run backtest (in a real app, this would call your API)
   const runBacktest = async () => {
     setIsLoading(true);
 
     try {
       const config = buildConfig();
 
-      // Mock API response for now
-      // In a real app, you would make an API call to your backend
-      setTimeout(() => {
-        // Mock results
-        const mockMetrics = {
-          win_rate: 0.4803921568627451,
-          sharpe_ratio: -0.045628954596080865,
-        };
+      // Add additional required fields from the example API request
+      const fullConfig = {
+        ...config,
+        underlying_asset: {
+          ...config.underlying_asset,
+          atm_source: "FUTURES",
+          exchange: "NSE",
+          currency: "INR",
+          lot_size: 75,
+          multiplier: 50,
+        },
+        execution: {
+          order_type: "limit",
+          time_in_force: "GTC",
+          slippage: "0.1%",
+          margin: "use_available",
+          order_validity: "day",
+        },
+        re_entry: {
+          max_retries: 3,
+          cooldown_minutes: 15,
+          re_entry_conditions: { price_reversal: true },
+        },
+        risk_management: {
+          skip_trade_if_insufficient_funds: true,
+          scale_lots_if_insufficient_funds: false,
+          risk_per_trade_pct: 0.02,
+          max_daily_loss_pct: 0.05,
+          max_drawdown_pct: 0.2,
+        },
+        backtest_settings: {
+          ...config.backtest_settings,
+          position_sizing: "fixed_lots",
+          commission: "₹20 per trade",
+          data_frequency: "intraday",
+          data_source: "local_csv",
+        },
+        logging: {
+          log_level: "INFO",
+          save_results: true,
+          output_path: "./backtest_results/",
+        },
+        reporting: {
+          metrics: [
+            "sharpe_ratio",
+            "win_rate",
+            "max_drawdown",
+            "profit_factor",
+          ],
+          plot_styles: { theme: "default" },
+        },
+        exit_conditions: {
+          time_exit: config.exit_conditions.exit_time,
+        },
+      };
 
-        const mockTrades = Array.from({ length: 102 }, (_, i) => ({
-          entry_date:
-            i === 100
-              ? "2022-12-28 09:45:00"
-              : i === 101
-              ? "2022-12-29 09:45:00"
-              : `2022-08-${(i % 30) + 1} 09:45:00`,
-          exit_date:
-            i === 100
-              ? "2022-12-28 14:45:00"
-              : i === 101
-              ? "2022-12-29 14:45:00"
-              : `2022-08-${(i % 30) + 1} 14:45:00`,
-          entry_underlying_price:
-            i === 100
-              ? 18108.3
-              : i === 101
-              ? 18005
-              : 18000 + Math.random() * 500,
-          exit_underlying_price:
-            i === 100
-              ? 18159.1
-              : i === 101
-              ? 18125.5
-              : 18000 + Math.random() * 500,
-          profit:
-            i === 100
-              ? 1014.9999999999999
-              : i === 101
-              ? 4015
-              : Math.random() * 2000 - 1000,
-        }));
+      // Remove the original exit_time property
+      delete fullConfig.exit_conditions.exit_time;
 
-        setMetrics(mockMetrics);
-        setTrades(mockTrades);
-        setResults({
-          metrics: mockMetrics,
-          trades: mockTrades,
-        });
+      // Change entry_time to time in entry_conditions
+      fullConfig.entry_conditions = {
+        time: config.entry_conditions.entry_time,
+      };
+      delete fullConfig.entry_conditions.entry_time;
 
-        setIsLoading(false);
-      }, 1500);
+      const response = await fetch(
+        "https://fb6a-2405-201-a41f-e852-5c16-cb31-eb0-6151.ngrok-free.app/run_backtest",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(fullConfig),
+          credentials: "include", // Include credentials if needed
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data, "kmjnjknh");
+
+      setMetrics(data.metrics);
+      setTrades(data.trades || []);
+      setResults(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error running backtest:", error);
       setIsLoading(false);
