@@ -90,7 +90,6 @@ export const BacktestProvider = ({ children }) => {
     try {
       const config = buildConfig();
 
-      // Add additional required fields from the example API request
       const fullConfig = {
         ...config,
         underlying_asset: {
