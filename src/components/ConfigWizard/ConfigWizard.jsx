@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useBacktest } from "../../contexts/BacktestContext";
 import GeneralConfig from "./GeneralConfig";
 import EntryExitConfig from "./EntryExitConfig";
-import BacktestSettings from "./BacktestSettings";
+import BacktestSettings from "./BackTestSettings";
 import OptionLegConfig from "./OptionLegConfig";
 import ConfigSummary from "./ConfigSummary";
 
