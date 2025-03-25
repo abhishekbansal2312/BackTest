@@ -20,7 +20,7 @@ const ConfigPanel = () => {
       {/* Current Config */}
       <div className="mt-6">
         <h3 className="text-lg font-medium mb-2">Current Config</h3>
-        <div className="bg-dark p-3 rounded-md overflow-auto max-h-48">
+        <div className="bg-black p-3 rounded-md overflow-auto max-h-48">
           <pre className="text-gray-300 text-sm">
             {config ? JSON.stringify(config, null, 2) : "{}"}
           </pre>
