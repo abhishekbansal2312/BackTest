@@ -30,7 +30,7 @@ const TradesTable = ({ trades }) => {
       </h3>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-dark rounded-lg overflow-hidden">
+        <table className="min-w-full bg-black rounded-lg overflow-hidden">
           <thead className="bg-gray-800">
             <tr>
               <th className="px-4 py-2 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
@@ -94,7 +94,7 @@ const TradesTable = ({ trades }) => {
       {totalPages > 1 && (
         <div className="flex justify-between items-center mt-4">
           <button
-            className="px-3 py-1 text-sm bg-dark rounded hover:bg-gray-700 disabled:opacity-50"
+            className="px-3 py-1 text-sm bg-black rounded hover:bg-gray-700 disabled:opacity-50"
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
           >
@@ -106,7 +106,7 @@ const TradesTable = ({ trades }) => {
           </span>
 
           <button
-            className="px-3 py-1 text-sm bg-dark rounded hover:bg-gray-700 disabled:opacity-50"
+            className="px-3 py-1 text-sm bg-black rounded hover:bg-gray-700 disabled:opacity-50"
             onClick={() =>
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
