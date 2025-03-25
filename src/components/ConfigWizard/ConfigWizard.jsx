@@ -5,6 +5,7 @@ import EntryExitConfig from "./EntryExitConfig";
 import BacktestSettings from "./BackTestSettings";
 import OptionLegConfig from "./OptionLegConfig";
 import ConfigSummary from "./ConfigSummary";
+import StepIndicator from "./StepIndicator";
 
 const steps = [
   { id: "general", title: "Basic Setup", component: GeneralConfig },
@@ -33,53 +34,39 @@ const ConfigWizard = ({ onComplete, isLoading }) => {
   const StepComponent = steps[currentStep].component;
 
   return (
-    <div className="glass-panel p-6">
-      <h1 className="text-2xl font-bold text-white mb-6">
-        Options Backtest Configuration
-      </h1>
-
-      {/* Progress Steps */}
-      <div className="flex justify-between mb-8 relative">
-        {steps.map((step, idx) => (
-          <div key={step.id} className="flex flex-col items-center z-10">
-            <div
-              className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold
-                ${
-                  idx <= currentStep
-                    ? "bg-primary text-white"
-                    : "bg-gray-700 text-gray-400"
-                }`}
-              onClick={() => idx < currentStep && setCurrentStep(idx)}
-            >
-              {idx + 1}
-            </div>
-            <div
-              className={`text-sm mt-2 ${
-                idx <= currentStep ? "text-white" : "text-gray-400"
-              }`}
-            >
-              {step.title}
-            </div>
-          </div>
-        ))}
-        {/* Progress line */}
-        <div className="absolute top-5 left-0 right-0 h-1 bg-gray-700 -z-0">
-          <div
-            className="h-full bg-primary transition-all duration-300"
-            style={{ width: `${(currentStep / (steps.length - 1)) * 100}%` }}
-          ></div>
+    <div className=" p-8 rounded-2xl shadow-2xl border border-indigo-800/50">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 tracking-tight">
+          Options Backtest Configuration
+        </h1>
+        <div className="flex items-center space-x-3">
+          <span className="text-sm text-gray-400">Progress:</span>
+          <span className="px-4 py-1.5 bg-green-500/20 text-green-400 rounded-full text-xs font-medium">
+            {`Step ${currentStep + 1} of ${steps.length}`}
+          </span>
         </div>
       </div>
 
+      {/* Progress Steps */}
+      <StepIndicator
+        steps={steps}
+        currentStep={currentStep}
+        setCurrentStep={setCurrentStep}
+      />
+
       {/* Step Content */}
-      <div className="min-h-[400px]">
+      <div className="min-h-[400px] mb-8">
         <StepComponent nextStep={nextStep} />
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-between">
         <button
-          className="btn-secondary px-6 py-2"
+          className={`px-6 py-2 rounded-md transition-all duration-300 ${
+            currentStep === 0
+              ? "bg-slate-700 text-gray-400 cursor-not-allowed"
+              : "bg-slate-800 text-white hover:bg-slate-700 hover:ring-2 hover:ring-cyan-500/50"
+          }`}
           onClick={prevStep}
           disabled={currentStep === 0}
         >
@@ -87,12 +74,19 @@ const ConfigWizard = ({ onComplete, isLoading }) => {
         </button>
 
         {currentStep < steps.length - 1 ? (
-          <button className="btn-primary px-6 py-2" onClick={nextStep}>
+          <button
+            className="px-6 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-600 transition-all duration-300 hover:ring-2 hover:ring-cyan-500/50"
+            onClick={nextStep}
+          >
             Continue
           </button>
         ) : (
           <button
-            className="btn-primary px-6 py-2"
+            className={`px-6 py-2 rounded-md transition-all duration-300 ${
+              isLoading
+                ? "bg-slate-700 text-gray-400 cursor-not-allowed"
+                : "bg-green-500 text-white hover:bg-green-600 hover:ring-2 hover:ring-green-500/50"
+            }`}
             onClick={() => {
               buildConfig();
               onComplete();
