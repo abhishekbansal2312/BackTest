@@ -59,7 +59,7 @@ const BacktestChart = ({ trades }) => {
 
   if (!chartData)
     return (
-      <div className="bg-dark rounded-lg p-4 flex items-center justify-center h-64">
+      <div className="bg-black rounded-lg p-4 flex items-center justify-center h-64">
         <p className="text-gray-400">No chart data available</p>
       </div>
     );
@@ -108,7 +108,7 @@ const BacktestChart = ({ trades }) => {
   };
 
   return (
-    <div className="bg-dark rounded-lg p-4">
+    <div className="bg-black rounded-lg p-4">
       <div style={{ height: "250px" }}>
         <Line data={chartData} options={options} />
       </div>
