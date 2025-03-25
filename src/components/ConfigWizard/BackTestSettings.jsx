@@ -98,7 +98,6 @@ const BacktestSettings = () => {
           </div>
         </div>
 
-        {/* Date Range Configuration */}
         <div className="bg-slate-800/60 backdrop-blur-lg rounded-xl p-5 border border-indigo-500/20 hover:border-indigo-500/50 transition-all duration-300">
           <label className="block text-sm font-semibold text-gray-300 mb-4 flex items-center">
             <svg
