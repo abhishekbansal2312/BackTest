@@ -104,7 +104,7 @@ const ConfigSummary = () => {
             {optionLegs.map((leg, index) => (
               <div
                 key={index}
-                className="flex items-center bg-dark p-2 rounded-lg"
+                className="flex items-center bg-black p-2 rounded-lg"
               >
                 <div className="w-16 text-center">
                   <span
@@ -137,7 +137,7 @@ const ConfigSummary = () => {
           <span>Raw Configuration</span>
           <span className="text-xs text-gray-400">(For Advanced Users)</span>
         </h3>
-        <div className="bg-dark p-3 rounded-md overflow-auto max-h-60">
+        <div className="bg-black p-3 rounded-md overflow-auto max-h-60">
           <pre className="text-gray-300 text-sm">
             {config ? JSON.stringify(config, null, 2) : "{}"}
           </pre>
