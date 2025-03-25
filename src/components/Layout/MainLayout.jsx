@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ConfigWizard from "../ConfigWizard/ConfigWizard";
-import BacktestResults from "../Results/BacktestResults";
+import BacktestResults from "../BacktestResults/index";
 import { useBacktest } from "../../contexts/BacktestContext";
 
 const MainLayout = () => {
