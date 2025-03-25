@@ -31,7 +31,7 @@ const Header = () => {
         <div className="flex items-center">
           <div className="text-2xl font-bold">
             BackTesting{" "}
-            <span className="inline-flex items-center justify-center w-6 h-6 bg-white bg-opacity-20 rounded-full">
+            <span className="inline-flex items-center justify-center w-6 h-6 bg-black bg-opacity-20 rounded-full">
               <span className="text-sm">®</span>
             </span>{" "}
             Engine
@@ -62,7 +62,7 @@ const Header = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-white text-black font-medium py-2 px-6 rounded hover:bg-gray-200 transition-colors"
+          className="bg-black text-black font-medium py-2 px-6 rounded hover:bg-gray-200 transition-colors"
         >
           GET STARTED →
         </motion.button>
