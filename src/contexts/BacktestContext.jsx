@@ -155,7 +155,7 @@ export const BacktestProvider = ({ children }) => {
       delete fullConfig.entry_conditions.entry_time;
 
       const response = await fetch(
-        "https://fb6a-2405-201-a41f-e852-5c16-cb31-eb0-6151.ngrok-free.app/run_backtest",
+        "https://bb17-2405-201-a41f-e852-f107-5f5d-d1a3-70b0.ngrok-free.app/run_backtest",
         {
           method: "POST",
           headers: {
