@@ -154,7 +154,7 @@ const OptionLegConfig = () => {
               Strike Selection
             </label>
             <select
-              className="w-full bg-dark rounded p-2"
+              className="w-full bg-black rounded p-2"
               value={newLeg.strike_selection.method}
               onChange={(e) =>
                 setNewLeg({
@@ -181,7 +181,7 @@ const OptionLegConfig = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full bg-dark rounded p-2"
+                  className="w-full bg-black rounded p-2"
                   value={newLeg.strike_selection.value}
                   onChange={(e) =>
                     setNewLeg({
@@ -214,7 +214,7 @@ const OptionLegConfig = () => {
               </button>
               <input
                 type="number"
-                className="bg-dark border-t border-b border-gray-700 py-2 text-center w-16"
+                className="bg-black border-t border-b border-gray-700 py-2 text-center w-16"
                 value={newLeg.lots}
                 onChange={(e) =>
                   setNewLeg({
@@ -234,7 +234,7 @@ const OptionLegConfig = () => {
         </div>
 
         {/* Visual representation of the option */}
-        <div className="bg-dark p-4 rounded-lg mb-4">
+        <div className="bg-black p-4 rounded-lg mb-4">
           <h4 className="text-gray-300 text-sm mb-2">Preview</h4>
           <div className="flex items-center space-x-3">
             <div
