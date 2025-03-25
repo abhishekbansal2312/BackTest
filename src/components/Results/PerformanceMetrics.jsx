@@ -3,7 +3,7 @@ import React from "react";
 const PerformanceMetrics = ({ metrics, expanded = false }) => {
   if (!metrics) {
     return (
-      <div className="bg-dark p-4 rounded-lg">
+      <div className="bg-black p-4 rounded-lg">
         <div className="text-gray-400 text-center">No metrics available</div>
       </div>
     );
@@ -91,7 +91,7 @@ const PerformanceMetrics = ({ metrics, expanded = false }) => {
         <h3 className="text-lg font-medium mb-3">Performance Metrics</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[...basicMetrics, ...additionalMetrics].map((metric, index) => (
-            <div key={index} className="bg-dark p-3 rounded-lg">
+            <div key={index} className="bg-black p-3 rounded-lg">
               <div className="text-gray-400 text-sm mb-1">{metric.label}</div>
               <div className={`text-xl font-bold ${metric.style}`}>
                 {metric.value}
@@ -104,7 +104,7 @@ const PerformanceMetrics = ({ metrics, expanded = false }) => {
   }
 
   return (
-    <div className="bg-dark p-4 rounded-lg">
+    <div className="bg-black p-4 rounded-lg">
       <h3 className="text-lg font-medium mb-3">Performance Metrics</h3>
       <div className="space-y-3">
         {basicMetrics.map((metric, index) => (
