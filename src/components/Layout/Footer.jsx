@@ -28,7 +28,7 @@ const Footer = () => {
           <div>
             <div className="text-2xl font-bold mb-6">
               logo{" "}
-              <span className="inline-flex items-center justify-center w-6 h-6 bg-white bg-opacity-20 rounded-full">
+              <span className="inline-flex items-center justify-center w-6 h-6 bg-black bg-opacity-20 rounded-full">
                 <span className="text-sm">®</span>
               </span>{" "}
               ipsum
