@@ -112,7 +112,7 @@ const OptionLegConfig = () => {
       {/* Current option legs */}
       <h4 className="text-lg font-medium mb-2">Current Option Legs</h4>
       {optionLegs.length > 0 ? (
-        <div className="bg-dark p-3 rounded-md overflow-auto max-h-48">
+        <div className="bg-black p-3 rounded-md overflow-auto max-h-48">
           {optionLegs.map((leg, index) => (
             <div
               key={index}
