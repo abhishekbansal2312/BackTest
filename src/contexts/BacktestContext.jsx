@@ -162,7 +162,7 @@ export const BacktestProvider = ({ children }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(fullConfig),
-          credentials: "include", // Include credentials if needed
+          // credentials: "include", // Include credentials if needed
         }
       );
 
