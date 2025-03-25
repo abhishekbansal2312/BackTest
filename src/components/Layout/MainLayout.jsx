@@ -35,7 +35,7 @@ const MainLayout = () => {
           {showConfig && (
             <div className="glass-panel p-4 mb-6 animate-fadeIn">
               <h3 className="text-lg font-medium mb-2">Configuration</h3>
-              <div className="bg-dark p-3 rounded-md overflow-auto max-h-60">
+              <div className="bg-black p-3 rounded-md overflow-auto max-h-60">
                 <pre className="text-gray-300 text-sm">
                   {JSON.stringify(config, null, 2)}
                 </pre>
