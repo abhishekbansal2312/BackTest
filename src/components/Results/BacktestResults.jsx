@@ -19,6 +19,7 @@ import {
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import TradesTable from "./TradesTable";
 
 // Advanced Metrics Calculation
 const calculateAdvancedMetrics = (trades) => {
@@ -427,45 +428,7 @@ const BacktestResults = () => {
           </div>
         )}
 
-        {activeTab === "trades" && (
-          <div>
-            <h3 className="text-lg font-medium mb-4">All Trades</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-black text-gray-300">
-                    <th className="p-2 border text-left">Entry Date</th>
-                    <th className="p-2 border text-left">Exit Date</th>
-                    <th className="p-2 border text-right">Entry Price</th>
-                    <th className="p-2 border text-right">Exit Price</th>
-                    <th className="p-2 border text-right">Profit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {trades.map((trade, index) => (
-                    <tr key={index} className="hover:bg-gray-700">
-                      <td className="p-2 border">{trade.entry_date}</td>
-                      <td className="p-2 border">{trade.exit_date}</td>
-                      <td className="p-2 border text-right">
-                        ₹{trade.entry_underlying_price.toLocaleString()}
-                      </td>
-                      <td className="p-2 border text-right">
-                        ₹{trade.exit_underlying_price.toLocaleString()}
-                      </td>
-                      <td
-                        className={`p-2 border text-right ${
-                          trade.profit > 0 ? "text-green-500" : "text-red-500"
-                        }`}
-                      >
-                        ₹{trade.profit.toLocaleString()}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
+        {activeTab === "trades" && <TradesTable trades={trades} />}
       </Tabs>
     </div>
   );
