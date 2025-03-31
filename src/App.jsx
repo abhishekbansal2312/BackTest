@@ -6,6 +6,7 @@ import MainLayout from "./components/Layout/MainLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Footer from "./components/Layout/Footer";
+import UserJourney from "./pages/UserJourney";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/main" element={<MainLayout />} />
+            <Route path="/journey" element={<UserJourney />} />
           </Routes>
           <Footer />
         </div>
