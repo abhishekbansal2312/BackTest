@@ -62,7 +62,7 @@ const Header = () => {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-black text-black font-medium py-2 px-6 rounded hover:bg-gray-200 transition-colors"
+          className="bg-black text-white font-medium py-2 px-6 rounded hover:bg-gray-200 transition-colors"
         >
           GET STARTED →
         </motion.button>
