@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { scrollYProgress } = useScroll();
@@ -29,17 +30,19 @@ const Header = () => {
     >
       <div className="container mx-auto flex justify-between items-center px-6">
         <div className="flex items-center">
-          <div className="text-2xl font-bold">
-            BackTesting{" "}
-            <span className="inline-flex items-center justify-center w-6 h-6 bg-black bg-opacity-20 rounded-full">
-              <span className="text-sm">®</span>
-            </span>{" "}
-            Engine
-          </div>
+          <Link to="/">
+            <div className="text-2xl font-bold">
+              BackTesting{" "}
+              <span className="inline-flex items-center justify-center w-6 h-6 bg-black bg-opacity-20 rounded-full">
+                <span className="text-sm">®</span>
+              </span>{" "}
+              Engine
+            </div>
+          </Link>
         </div>
 
         <nav className="hidden md:flex space-x-8">
-          <a href="#about" className="hover:text-gray-300 transition-colors">
+          <a href="/journey" className="hover:text-gray-300 transition-colors">
             About
           </a>
           <a href="#features" className="hover:text-gray-300 transition-colors">
